@@ -1,11 +1,11 @@
-# ![LOGO](logo.png) Authentiq MSP Connector
+# ![LOGO](logo.png) Authentiq **flow**ground Connector
 
 ## Description
 
-A generated MSP connector for the Authentiq API (version 6).
+A generated **flow**ground connector for the Authentiq API (version 6).
 
 Generated from: https://api.apis.guru/v2/specs/6-dot-authentiqio.appspot.com/6/swagger.json<br/>
-Generated at: 2019-05-07T11:15:09+03:00
+Generated at: 2019-05-07T16:41:37+03:00
 
 ## API Description
 
