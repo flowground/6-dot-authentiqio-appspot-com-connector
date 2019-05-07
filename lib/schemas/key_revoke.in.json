@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "PK": {
+            "required": true,
+            "type": "string"
+        },
+        "secret": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

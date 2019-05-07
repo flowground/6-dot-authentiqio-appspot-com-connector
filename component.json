@@ -1,0 +1,272 @@
+{
+    "title": "Authentiq",
+    "description": "Strong authentication, without the passwords.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/6-dot-authentiqio.appspot.com/6/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://6-dot-authentiqio.appspot.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "key_revoke_nosecret": {
+            "main": "./lib/actions/key_revoke_nosecret.js",
+            "title": "Revoke an Authentiq ID using email & phone.\n\nIf called with `email` and `phone` only, a verification code \nwill be sent by email. Do a second call adding `code` to \ncomplete the revocation.\n",
+            "description": "Revoke an Authentiq ID using email & phone.\n\nIf called with `email` and `phone` only, a verification code \nwill be sent by email. Do a second call adding `code` to \ncomplete the revocation.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/key_revoke_nosecret.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "key_register": {
+            "main": "./lib/actions/key_register.js",
+            "title": "Register a new ID `JWT(sub, devtoken)`\n\nv5: `JWT(sub, pk, devtoken, ...)`\n\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+            "description": "Register a new ID `JWT(sub, devtoken)`\n\nv5: `JWT(sub, pk, devtoken, ...)`\n\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/key_register.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "key_revoke": {
+            "main": "./lib/actions/key_revoke.js",
+            "title": "Revoke an Identity (Key) with a revocation secret",
+            "description": "Revoke an Identity (Key) with a revocation secret",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/key_revoke.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_key__PK_": {
+            "main": "./lib/actions/get_key__PK_.js",
+            "title": "Get public details of an Authentiq ID.\n",
+            "description": "Get public details of an Authentiq ID.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_key__PK_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "head_key__PK_": {
+            "main": "./lib/actions/head_key__PK_.js",
+            "title": "HEAD info on Authentiq ID\n",
+            "description": "HEAD info on Authentiq ID\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/head_key__PK_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "key_update": {
+            "main": "./lib/actions/key_update.js",
+            "title": "update properties of an Authentiq ID.\n(not operational in v4; use PUT for now)\n\nv5: POST issuer-signed email & phone scopes in\na self-signed JWT\n\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+            "description": "update properties of an Authentiq ID.\n(not operational in v4; use PUT for now)\n\nv5: POST issuer-signed email & phone scopes in\na self-signed JWT\n\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/key_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "key_bind": {
+            "main": "./lib/actions/key_bind.js",
+            "title": "Update Authentiq ID by replacing the object.\n\nv4: `JWT(sub,email,phone)` to bind email/phone hash; \n\nv5: POST issuer-signed email & phone scopes\nand PUT to update registration `JWT(sub, pk, devtoken, ...)`\n\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+            "description": "Update Authentiq ID by replacing the object.\n\nv4: `JWT(sub,email,phone)` to bind email/phone hash; \n\nv5: POST issuer-signed email & phone scopes\nand PUT to update registration `JWT(sub, pk, devtoken, ...)`\n\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/key_bind.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "push_login_request": {
+            "main": "./lib/actions/push_login_request.js",
+            "title": "push sign-in request\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+            "description": "push sign-in request\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/push_login_request.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sign_request": {
+            "main": "./lib/actions/sign_request.js",
+            "title": "scope verification request\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+            "description": "scope verification request\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sign_request.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sign_delete": {
+            "main": "./lib/actions/sign_delete.js",
+            "title": "delete a verification job",
+            "description": "delete a verification job",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sign_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sign_retrieve": {
+            "main": "./lib/actions/sign_retrieve.js",
+            "title": "get the status / current content of a verification job",
+            "description": "get the status / current content of a verification job",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sign_retrieve.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sign_retrieve_head": {
+            "main": "./lib/actions/sign_retrieve_head.js",
+            "title": "HEAD to get the status of a verification job",
+            "description": "HEAD to get the status of a verification job",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sign_retrieve_head.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sign_confirm": {
+            "main": "./lib/actions/sign_confirm.js",
+            "title": "this is a scope confirmation",
+            "description": "this is a scope confirmation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sign_confirm.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sign_update": {
+            "main": "./lib/actions/sign_update.js",
+            "title": "authority updates a JWT with its signature\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+            "description": "authority updates a JWT with its signature\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sign_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

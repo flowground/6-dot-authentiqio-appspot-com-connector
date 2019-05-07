@@ -1,0 +1,41 @@
+{
+    "type": "object",
+    "properties": {
+        "callback": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "PushToken in JWT format, self-signed. \n",
+            "properties": {
+                "aud": {
+                    "description": "audience (URI)",
+                    "type": "string"
+                },
+                "exp": {
+                    "type": "integer"
+                },
+                "iat": {
+                    "type": "integer"
+                },
+                "iss": {
+                    "description": "issuer (URI)",
+                    "type": "string"
+                },
+                "nbf": {
+                    "type": "integer"
+                },
+                "sub": {
+                    "description": "UUID and public signing key",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "sub",
+                "iss",
+                "aud"
+            ],
+            "type": "object"
+        }
+    }
+}

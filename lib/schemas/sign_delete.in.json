@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "job": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

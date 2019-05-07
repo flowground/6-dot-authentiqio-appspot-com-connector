@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "PK": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

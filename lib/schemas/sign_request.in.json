@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "test": {
+            "required": false,
+            "type": "integer"
+        },
+        "requestBody": {
+            "description": "Claim in JWT format, self- or issuer-signed. \n",
+            "properties": {
+                "email": {
+                    "description": "",
+                    "type": "string"
+                },
+                "phone": {
+                    "description": "",
+                    "type": "string"
+                },
+                "scope": {
+                    "description": "claim scope",
+                    "type": "string"
+                },
+                "sub": {
+                    "description": "UUID",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "sub",
+                "scope"
+            ],
+            "type": "object"
+        }
+    }
+}

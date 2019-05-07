@@ -1,0 +1,22 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "Authentiq ID in JWT format, self-signed.\n",
+            "properties": {
+                "devtoken": {
+                    "description": "device token for push messages",
+                    "type": "string"
+                },
+                "sub": {
+                    "description": "UUID and public signing key",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "sub"
+            ],
+            "type": "object"
+        }
+    }
+}
